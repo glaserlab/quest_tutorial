@@ -1,0 +1,8 @@
+# @package _global_.dataset
+
+name: fashion_mnist
+data_dir: ./data
+num_classes: 10
+val_split: 0.1
+num_workers: 2
+normalize: true
