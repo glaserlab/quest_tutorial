@@ -25,21 +25,19 @@ cd src && python train.py
 - **[HYDRA_GUIDE.md](docs/HYDRA_GUIDE.md)** - Quick start guide with examples
 - **[PROJECT_README.md](docs/PROJECT_README.md)** - Comprehensive documentation
 - **[HYDRA_FLOW.md](docs/HYDRA_FLOW.md)** - Visual explanation of Hydra's configuration system
+- **[QUEST_GUIDE.md](docs/QUEST_GUIDE.md)** - Running on QUEST SLURM cluster
 
 ### 🚀 Quick Examples
 
 ```bash
-# Compare models
+# Local execution
 python train.py model=mlp
-
-# Try Fashion-MNIST
 python train.py dataset=fashion_mnist
-
-# Hyperparameter override
 python train.py training.learning_rate=0.01 training.epochs=20
 
-# Run multiple experiments
-python train.py -m model=convnet,mlp dataset=mnist,fashion_mnist
+# QUEST cluster execution
+python train.py env=quest
+python train.py -m env=quest model=convnet,mlp dataset=mnist,fashion_mnist
 ```
 
 ### 📦 Project Contents
@@ -66,6 +64,7 @@ python train.py -m model=convnet,mlp dataset=mnist,fashion_mnist
 ✓ Modular config files with **config groups**  
 ✓ Command-line overrides for hyperparameters  
 ✓ Running **multi-run experiments** for sweeps  
+✓ **SLURM cluster integration** with Hydra Submitit  
 ✓ Organized output directories and logging  
 ✓ Best practices for reproducible ML experiments
 
@@ -77,6 +76,8 @@ python train.py -m model=convnet,mlp dataset=mnist,fashion_mnist
 - Validation split and best model checkpointing
 - Progress bars and detailed logging
 - Learning rate scheduling
+- **QUEST SLURM cluster support** with Hydra Submitit
+- Environment-specific configs (local vs. cluster)
 - Fully configurable via YAML files
 
 ---

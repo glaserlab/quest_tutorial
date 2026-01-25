@@ -1,0 +1,46 @@
+# Hydra Submitit Launcher Configuration for QUEST SLURM Cluster
+# This file configures job submission parameters for the QUEST cluster
+
+# Override the default Hydra launcher with submitit
+defaults:
+  - override /hydra/launcher: submitit_slurm
+
+# Submitit launcher configuration
+_target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.SlurmLauncher
+account: p31796
+name: ${hydra.job.name}
+timeout_min: 240          # Job timeout in minutes (adjust as needed)
+partition: short          # QUEST partition (options: short, normal, long, gpu)
+tasks_per_node: 1         # Number of tasks per node
+cpus_per_task: 20         # Number of CPUs per task
+gpus_per_node: 0          # Number of GPUs per node (set to >0 if using GPU partition)
+nodes: 1                  # Number of nodes
+mem_gb: 64                # Memory in GB per node
+
+submitit_folder: ${hydra.sweep.dir}/%j
+setup:
+    - export WANDB_START_METHOD=thread
+
+# Example configurations for different QUEST partitions:
+# ----------------------------------------------------
+# 
+# Short partition (4 hours max, quick turnaround):
+#   partition: "short"
+#   timeout_min: 240
+#
+# Normal partition (48 hours max):
+#   partition: "normal"
+#   timeout_min: 2880
+#
+# GPU partition:
+#   partition: "gpu"
+#   gpus_per_node: 1
+#   timeout_min: 240
+#
+# Long partition (168 hours max):
+#   partition: "long"
+#   timeout_min: 10080
+#
+# High memory partition:
+#   partition: "highmem"
+#   mem_gb: 64

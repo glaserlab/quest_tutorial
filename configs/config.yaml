@@ -1,4 +1,5 @@
 defaults:
+  - env: local  # Use 'env=quest' for SLURM cluster
   - model: convnet
   - dataset: mnist
   - _self_
@@ -12,10 +13,7 @@ training:
   scheduler_step: 5
   scheduler_gamma: 0.1
 
-# Hydra configuration
-hydra:
-  run:
-    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
-  sweep:
-    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
-    subdir: ${hydra.job.num}
+# Paths (defined in env configs, but can be overridden)
+paths:
+  data_dir: ./data
+  output_dir: ./outputs

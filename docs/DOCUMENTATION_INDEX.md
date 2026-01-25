@@ -25,6 +25,11 @@ Welcome! This project demonstrates using Hydra for ML experiment configuration. 
   - All features explained in detail
   - Reference for advanced usage
 
+- **[QUEST_GUIDE.md](QUEST_GUIDE.md)** (9.6 KB)
+  - Running experiments on QUEST SLURM cluster
+  - Complete setup and usage guide
+  - SLURM job configuration and monitoring
+
 ### For Reference
 - **[QUICK_REFERENCE.txt](../QUICK_REFERENCE.txt)** (4.5 KB)
   - One-page command reference
