@@ -12,6 +12,7 @@ paths:
 # Use QUEST SLURM launcher
 defaults:
   - override /hydra/launcher: quest
+  - _self_
 
 # Hydra output configuration for QUEST runs
 hydra:
