@@ -3,7 +3,7 @@
 
 # Override the default Hydra launcher with submitit
 defaults:
-  - override /hydra/launcher: submitit_slurm
+  - submitit_slurm
 
 # Submitit launcher configuration
 _target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.SlurmLauncher
