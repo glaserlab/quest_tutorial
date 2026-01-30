@@ -1,0 +1,23 @@
+# @package _global_
+
+# QUEST SLURM cluster environment configuration
+# Use this when submitting jobs to the QUEST cluster
+
+# Data and output directories on QUEST
+# IMPORTANT: Update these paths to your QUEST directories
+paths:
+  data_dir: /projects/p31796/bareesh_bhaduri/data  # UPDATE THIS PATH
+  output_dir: /projects/p31796/bareesh_bhaduri/outputs  # UPDATE THIS PATH
+
+# Use QUEST SLURM launcher
+defaults:
+  - override /hydra/launcher: quest
+
+# Hydra output configuration for QUEST runs
+hydra:
+  run:
+    dir: ${paths.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${paths.output_dir}/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+
